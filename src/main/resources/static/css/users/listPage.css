@@ -1,0 +1,8 @@
+.card-footer {
+    display: flex;
+    justify-content: center;
+}
+
+#removeButton {
+    color: #e83e8c;
+}

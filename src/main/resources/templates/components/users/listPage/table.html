@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="table-fragment">
+  <div class="col-sm-12">
+    <table class="table table-bordered table-hover" role="grid" style="width: 100%;">
+      <thead>
+      <tr role="row">
+        <th class="sort">계정 번호</th>
+        <th class="sort">계정 ID</th>
+        <th class="sort">사용자 이름</th>
+        <th class="sort">기능</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="user : *{results}">
+        <td th:text="*{user.id}"></td>
+        <td th:text="*{user.username}"></td>
+        <td th:text="*{user.name}"></td>
+        <td>
+          <a id="removeButton" class="btn-link" type="button"
+             th:onclick="listPage.removeUser([[*{user.id}]], [[*{user.username}]]);">삭제
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</th:block>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutPage}">
+
+<head>
+  <title>Search Analyzer :: Error</title>
+</head>
+
+<th:block layout:fragment="content">
+  <div class="card blank-box">
+    <div class="card-header">
+      <h5 class="text-primary font-weight-bold m-0">오류</h5>
+    </div>
+    <div class="card-body">
+      <p id="message" th:text="${message}"></p>
+    </div>
+    <div class="card-footer">
+    </div>
+  </div>
+</th:block>
+
+</html>

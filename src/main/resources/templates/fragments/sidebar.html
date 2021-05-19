@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:fragment="sidebar-fragment">
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- 메뉴 이름 -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-laugh-wink"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">Search Analyzer</div>
+    </a>
+
+    <!-- 메뉴 구분선 -->
+    <hr class="sidebar-divider my-0">
+    <th:block sec:authorize="isAuthenticated()">
+      <!-- 메뉴 구분선 -->
+      <div id="userDetails" class="container">
+        <div class="text-left">
+          <span>접속 ID: </span>
+          <span sec:authentication="principal.username"></span>
+        </div>
+        <div class="text-left">
+          <span>접근 권한: </span>
+          <span sec:authentication="principal.authorities"></span>
+        </div>
+      </div>
+      <hr class="sidebar-divider my-0">
+    </th:block>
+
+    <!-- 하위 메뉴 -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+        <i class="fas fa-fw fa-user-circle"></i>
+        <span>계정 메뉴</span>
+      </a>
+      <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">계정 메뉴:</h6>
+          <th:block sec:authorize="isAnonymous()">
+            <a class="collapse-item" th:href="@{/users/join}">계정 등록</a>
+            <a class="collapse-item" th:href="@{/users/login}">계정 로그인</a>
+          </th:block>
+          <th:block sec:authorize="isAuthenticated()">
+            <a class="collapse-item" th:href="@{/users/profile}">계정 프로필</a>
+            <a class="collapse-item" th:href="@{/users/logout}">계정 로그아웃</a>
+          </th:block>
+        </div>
+      </div>
+    </li>
+
+    <!-- 하위 메뉴 -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKeyword" aria-expanded="true" aria-controls="collapseKeyword">
+        <i class="fas fa-fw fa-search"></i>
+        <span>검색어 메뉴</span>
+      </a>
+      <div id="collapseKeyword" class="collapse" aria-labelledby="headingKeyword" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">검색어 메뉴:</h6>
+          <a class="collapse-item" th:href="@{/keywords/search}">실시간 검색</a>
+          <a class="collapse-item" th:href="@{/keywords/host}">호스트 통계</a>
+          <a class="collapse-item" th:href="@{/keywords/related}">연관 검색어</a>
+        </div>
+      </div>
+    </li>
+
+    <!-- 하위 메뉴 -->
+    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseKeyword">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>관리 메뉴</span>
+        </a>
+        <div id="collapseAdmin" class="collapse" aria-labelledby="headingAdmin" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">관리 메뉴:</h6>
+            <a class="collapse-item" th:href="@{/admin/users}">계정 목록</a>
+          </div>
+        </div>
+      </li>
+    </th:block>
+
+    <!-- 하위 메뉴 -->
+    <!-- ? -->
+  </ul>
+</th:block>
+
+</html>

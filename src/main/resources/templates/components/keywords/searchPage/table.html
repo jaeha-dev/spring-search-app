@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="table-fragment">
+  <div class="col-sm-12">
+    <table class="table table-bordered table-hover" role="grid" style="width: 100%;">
+      <thead>
+      <tr role="row">
+        <th>번호</th>
+        <th>URL</th>
+        <th>타이틀</th>
+        <th>검색어 출현수</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="result, index : *{results}">
+        <td th:text="*{index.index + 1}"></td>
+        <td th:text="*{result.search.host}" th:onclick="searchPage.openLink([[*{result.url}]])" style="cursor:pointer;"></td>
+        <td th:text="*{result.title}"></td>
+        <td th:text="*{result.frequency}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</th:block>
+
+</html>

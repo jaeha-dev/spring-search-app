@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="table-fragment">
+  <div class="col-sm-12">
+    <table class="table table-bordered table-hover" role="grid" style="width: 100%;">
+      <thead>
+      <tr role="row">
+        <th>번호</th>
+        <th>검색어</th>
+        <th>호스트 이름</th>
+        <th>누적 검색수</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="result : ${results}">
+        <td th:text="${result.id}"></td>
+        <td th:text="${result.keyword}"></td>
+        <td th:text="${result.host}"></td>
+        <td th:text="${result.count}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</th:block>
+
+</html>

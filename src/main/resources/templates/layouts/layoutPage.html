@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Search Analyzer</title>
+  <th:block th:replace="fragments/head::head-fragment"/>
+  <th:block th:replace="fragments/script::script-fragment"/>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="sidebar-wrapper">
+      <th:block th:replace="fragments/sidebar::sidebar-fragment"/>
+    </div>
+    <div id="content-wrapper" class="d-flex flex-column bg-light">
+      <div id="content">
+        <th:block th:replace="fragments/header::header-fragment"/>
+        <th:block layout:fragment="content"/>
+      </div>
+      <!-- <div id="footer-wrapper"> -->
+      <!--   <th:block th:replace="fragments/footer::footer-fragment"/> -->
+      <!-- </div> -->
+    </div>
+  </div>
+</body>
+
+</html>

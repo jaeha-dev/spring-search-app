@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="searchSort-fragment">
+  <!-- 검색 초기화 -->
+  <div class="col-sm-6 col-md-6">
+    <button class="btn btn-light" onclick="listPage.refresh();">
+      <i class="fas fa-redo-alt"></i>
+    </button>
+  </div>
+  <!-- 정렬 및 검색 -->
+  <div class="col-sm-6 col-md-6">
+    <form method="get" th:object="${form}" th:action="@{/admin/users}">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label for="sortOption">
+            <!-- 페이지 전환 시, 선택 옵션을 고정하기 위해 th:selected 사용함 (th:field와 함께 사용할 수 없음) -->
+            <select id="sortOption" class="form-control custom-select" name="sortOption">
+              <option
+                  th:each="option : ${T(app.search.google.infra.domain.SortOption).values()}"
+                  th:text="${option.value}"
+                  th:value="${option.key}"
+                  th:selected="(${option.key} == ${sortOption.key})">
+              </option>
+            </select>
+          </label>
+        </div>
+        <div class="input-group-prepend">
+          <label for="searchOption">
+            <!-- 페이지 전환 시, 선택 옵션을 고정하기 위해 th:selected 사용함 (th:field와 함께 사용할 수 없음) -->
+            <select id="searchOption" class="form-control custom-select" name="searchOption">
+              <option
+                  th:each="option : ${T(app.search.google.modules.user.domain.SearchOption).values()}"
+                  th:text="${option.value}"
+                  th:value="${option.key}"
+                  th:selected="(${option.key} == ${searchOption.key})">
+              </option>
+            </select>
+          </label>
+        </div>
+        <label for="searchKeyword"></label>
+        <!-- 페이지 전환 시, 입력 값을 고정하기 위해 th:value 사용함 -->
+        <!-- ID 조건 검색 시, 검색어는 삭제한다. -->
+        <input id="searchKeyword" class="form-control" name="searchKeyword" type="text"
+               th:value="${searchOption.key.equalsIgnoreCase('id')} ? '' : ${searchKeyword}">
+        <div>
+          <button id="searchButton" class="btn btn-primary" type="submit">검색</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</th:block>
+
+</html>

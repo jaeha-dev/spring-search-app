@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutPage}">
+
+<head>
+  <title>Search Analyzer :: User List</title>
+  <link th:href="@{/css/users/listPage.css}" rel="stylesheet">
+  <script th:src="@{/js/users/listPage.js}"></script>
+</head>
+
+<div layout:fragment="content">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="text-primary font-weight-bold m-0">계정 목록</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <!-- 정렬 및 검색 -->
+        <div class="row">
+          <th:block th:replace="components/users/listPage/searchSort::searchSort-fragment"/>
+        </div>
+        <!-- 테이블 -->
+        <div class="row">
+          <th:block th:replace="components/users/listPage/table::table-fragment"/>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <!-- 페이지네이션 -->
+      <th:block th:replace="components/users/listPage/pagination::pagination-fragment"/>
+    </div>
+  </div>
+</div>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutPage}">
+
+<head>
+  <title>Search Analyzer :: Search Result</title>
+  <script th:src="@{/js/keywords/searchPage.js}"></script>
+</head>
+
+<div layout:fragment="content">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="text-primary font-weight-bold m-0">실시간 검색</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <div class="row" style="margin-bottom: 0.5rem;">
+          <!-- 검색 초기화 -->
+          <div class="col-sm-6 col-md-6">
+            <button class="btn btn-light" onclick="searchPage.refresh();">
+              <i class="fas fa-redo-alt"></i>
+            </button>
+          </div>
+          <!-- 검색 -->
+          <th:block th:replace="components/keywords/searchPage/search::search-fragment"/>
+        </div>
+        <!-- 테이블 -->
+        <div class="row">
+          <th:block th:replace="components/keywords/searchPage/table::table-fragment"/>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <!-- 페이지네이션 -->
+    </div>
+  </div>
+</div>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="search-fragment">
+  <form class="col-sm-6 col-md-6" method="post" th:action="@{/keywords/search}">
+    <div class="input-group">
+      <label for="searchKeyword"></label>
+      <!-- 페이지 전환 시, 입력 값을 고정하기 위해 th:value 사용함 -->
+      <input id="searchKeyword" class="form-control" name="searchKeyword" type="text"
+             th:value="*{searchKeyword}">
+      <div class="">
+        <button id="searchButton" class="btn btn-primary" type="submit">검색</button>
+      </div>
+    </div>
+  </form>
+</th:block>
+
+</html>

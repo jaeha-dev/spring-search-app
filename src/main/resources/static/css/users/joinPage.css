@@ -1,0 +1,15 @@
+.container {
+    margin-top: 3rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-size: 0.8rem;
+}
+
+#joinButtons {
+    margin-top: 2.5rem;
+}
